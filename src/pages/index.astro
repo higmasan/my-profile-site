@@ -1,18 +1,5 @@
 ---
-// ===========================
-// フロントマター（データ定義）
-// ===========================
-
-const name = "田中太郎"
-const job = "Web開発者"
-const year = new Date().getFullYear()
-const pageTitle = `${name}のサイト`
-
-const introduction = `
-  Webサイトの制作をしています。
-  HTML/CSS/JavaScriptを使ったフロントエンド開発が得意です。
-  最近はAstro.jsを使ったサイト構築に興味があります。
-`.trim()
+import BaseLayout from '../layouts/BaseLayout.astro'
 
 const skills = [
   { name: "HTML", icon: "📄" },
@@ -23,134 +10,46 @@ const skills = [
 ]
 
 const isAvailable = true
-
-const navItems = [
-  { label: "🏠 ホーム", href: "/" },
-  { label: "💁 自己紹介", href: "/about" },
-  { label: "💼 スキル", href: "/skills" },
-  { label: "🎨 作品", href: "/works" },
-  { label: "✉️ お問い合わせ", href: "/contact" },
-]
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <!-- ヘッダー -->
-    <header class="header">
-      <nav class="nav">
-        {navItems.map((item) => (
-          <a href={item.href} class="nav-link">{item.label}</a>
-        ))}
-      </nav>
-    </header>
+<BaseLayout title="田中太郎のサイト">
+  <!-- 自己紹介セクション -->
+  <section class="hero">
+    <h1 class="hero-title">こんにちは、田中太郎です！</h1>
+    <p class="hero-subtitle">Web開発者</p>
+  </section>
 
-    <!-- メインコンテンツ -->
-    <main class="main">
-      <!-- 自己紹介セクション -->
-      <section class="hero">
-        <h1 class="hero-title">こんにちは、{name}です！</h1>
-        <p class="hero-subtitle">{job}</p>
-      </section>
+  <!-- 紹介文セクション -->
+  <section class="about">
+    <p class="about-text">
+      Webサイトの制作をしています。
+      HTML/CSS/JavaScriptを使ったフロントエンド開発が得意です。
+      最近はAstro.jsを使ったサイト構築に興味があります。
+    </p>
+  </section>
 
-      <!-- 紹介文セクション -->
-      <section class="about">
-        <p class="about-text">{introduction}</p>
-      </section>
-
-      <!-- スキルセクション -->
-      <section class="skills">
-        <h2 class="section-title">スキル</h2>
-        <div class="skill-list">
-          {skills.map((skill) => (
-            <div class="skill-card">
-              <span class="skill-icon">{skill.icon}</span>
-              <span class="skill-name">{skill.name}</span>
-            </div>
-          ))}
+  <!-- スキルセクション -->
+  <section class="skills">
+    <h2 class="section-title">スキル</h2>
+    <div class="skill-list">
+      {skills.map((skill) => (
+        <div class="skill-card">
+          <span class="skill-icon">{skill.icon}</span>
+          <span class="skill-name">{skill.name}</span>
         </div>
-      </section>
+      ))}
+    </div>
+  </section>
 
-      <!-- お仕事募集中バッジ（条件分岐） -->
-      {isAvailable && (
-        <section class="available">
-          <p class="available-text">📢 お仕事募集中！お気軽にお問い合わせください。</p>
-        </section>
-      )}
-    </main>
-
-    <!-- フッター -->
-    <footer class="footer">
-      <p>&copy; {year} {name}</p>
-    </footer>
-  </body>
-</html>
+  <!-- お仕事募集中バッジ -->
+  {isAvailable && (
+    <section class="available">
+      <p class="available-text">📢 お仕事募集中！お気軽にお問い合わせください。</p>
+    </section>
+  )}
+</BaseLayout>
 
 <style>
-  /* =============================
-     グローバルリセット（仮）
-     第5章でレイアウトに移動します
-     ============================= */
-</style>
-
-<style is:global>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: "Helvetica Neue", Arial, "Hiragino Sans",
-      "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-    line-height: 1.8;
-    color: #333;
-    background-color: #fafafa;
-  }
-</style>
-
-<style>
-  /* ===========================
-     ヘッダー
-     =========================== */
-  .header {
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
-    padding: 1rem 2rem;
-  }
-
-  .nav {
-    display: flex;
-    gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .nav-link {
-    color: #555;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.2s;
-  }
-
-  .nav-link:hover {
-    color: #4f39fa;
-  }
-
-  /* ===========================
-     メインコンテンツ
-     =========================== */
-  .main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
-  /* 自己紹介セクション */
   .hero {
     text-align: center;
     padding: 3rem 0;
@@ -167,7 +66,6 @@ const navItems = [
     color: #888;
   }
 
-  /* 紹介文セクション */
   .about {
     padding: 2rem 0;
   }
@@ -178,7 +76,6 @@ const navItems = [
     white-space: pre-line;
   }
 
-  /* スキルセクション */
   .skills {
     padding: 2rem 0;
   }
@@ -216,7 +113,6 @@ const navItems = [
     font-size: 1.2rem;
   }
 
-  /* お仕事募集中 */
   .available {
     margin-top: 2rem;
     padding: 1.5rem;
@@ -228,40 +124,5 @@ const navItems = [
   .available-text {
     color: #4f39fa;
     font-weight: bold;
-  }
-
-  /* ===========================
-     フッター
-     =========================== */
-  .footer {
-    text-align: center;
-    padding: 2rem;
-    color: #888;
-    font-size: 0.85rem;
-    border-top: 1px solid #eee;
-    margin-top: 3rem;
-  }
-
-  /* ===========================
-     レスポンシブ
-     =========================== */
-  @media (max-width: 600px) {
-    .nav {
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .hero-title {
-      font-size: 1.5rem;
-    }
-
-    .skill-list {
-      gap: 0.5rem;
-    }
-
-    .skill-card {
-      padding: 0.5rem 1rem;
-      font-size: 0.85rem;
-    }
   }
 </style>

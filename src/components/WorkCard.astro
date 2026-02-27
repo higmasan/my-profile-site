@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string
+  description: string
+  tags: string[]
+  year: number
+}
+
+const { title, description, tags, year } = Astro.props
+---
+
+<article class="work-card">
+  <div class="work-card-body">
+    <h2 class="work-title">{title}</h2>
+    <p class="work-description">{description}</p>
+    <div class="work-tags">
+      {tags.map((tag) => (
+        <span class="tag">{tag}</span>
+      ))}
+    </div>
+    <p class="work-year">{year}年</p>
+  </div>
+</article>
+
+<style>
+  .work-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+
+  .work-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .work-card-body {
+    padding: 1.5rem;
+  }
+
+  .work-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .work-description {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .work-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tag {
+    display: inline-block;
+    background-color: #f0edff;
+    color: #4f39fa;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+  }
+
+  .work-year {
+    color: #aaa;
+    font-size: 0.85rem;
+  }
+</style>

@@ -1,0 +1,148 @@
+---
+const name = "田中太郎"
+const pageTitle = `スキル - ${name}のサイト`
+const skillCategories = [
+  {
+    category: "フロントエンド",
+    skills: [
+      { name: "HTML", level: 5 },
+      { name: "CSS", level: 5 },
+      { name: "JavaScript", level: 4 },
+      { name: "Astro.js", level: 3 },
+    ],
+  },
+  {
+    category: "ツール",
+    skills: [
+      { name: "Git", level: 4 },
+      { name: "VS Code", level: 5 },
+      { name: "Figma", level: 3 },
+    ],
+  },
+]
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <a href="/">🏠 ホーム</a>
+        <a href="/about">💁 自己紹介</a>
+        <a href="/skills">💼 スキル</a>
+        <a href="/works">🎨 作品</a>
+        <a href="/contact">✉️ お問い合わせ</a>
+      </nav>
+    </header>
+
+    <main class="main">
+      <h1>スキル</h1>
+
+      {skillCategories.map((cat) => (
+        <section class="skill-category">
+          <h2>{cat.category}</h2>
+          <div class="skill-list">
+            {cat.skills.map((skill) => (
+              <div class="skill-item">
+                <span class="skill-name">{skill.name}</span>
+                <span class="skill-level">
+                  {"★".repeat(skill.level)}{"☆".repeat(5 - skill.level)}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </main>
+
+    <footer class="footer">
+      <p>&copy; {new Date().getFullYear()} {name}</p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .header {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 1rem 2rem;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .nav a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .nav a:hover {
+    color: #4f39fa;
+  }
+
+  .main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #4f39fa;
+    margin-bottom: 1.5rem;
+  }
+
+  .skill-category {
+    margin-bottom: 2rem;
+  }
+
+  .skill-category h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #4f39fa;
+  }
+
+  .skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .skill-name {
+    font-weight: bold;
+  }
+
+  .skill-level {
+    color: #f5a623;
+    letter-spacing: 2px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    color: #888;
+    font-size: 0.85rem;
+    border-top: 1px solid #eee;
+    margin-top: 3rem;
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+import '../styles/global.css'
 
 interface Props {
   title?: string
@@ -28,47 +29,13 @@ const {
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="bg-gray-50 text-gray-800">
     <Header />
 
-    <main class="main">
+    <main class="max-w-3xl mx-auto px-4 py-8 md:px-6">
       <slot />
     </main>
 
     <Footer />
   </body>
 </html>
-
-<style is:global>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: "Noto Sans JP", "Helvetica Neue", Arial,
-      "Hiragino Sans", "Hiragino Kaku Gothic ProN",
-      Meiryo, sans-serif;
-    line-height: 1.8;
-    color: #333;
-    background-color: #fafafa;
-  }
-
-  a {
-    color: #4f39fa;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-</style>
-
-<style>
-  .main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-</style>

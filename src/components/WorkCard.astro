@@ -13,91 +13,27 @@ interface Props {
 const { title, description, tags, year, image } = Astro.props
 ---
 
-<article class="work-card">
+<article class="bg-white border border-gray-200 rounded-xl overflow-hidden transition-shadow hover:shadow-lg">
   {image && (
-    <div class="work-card-image">
+    <div class="overflow-hidden">
       <Image
         src={image}
         alt={title}
         width={600}
-        class="work-image"
+        class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
       />
     </div>
   )}
-  <div class="work-card-body">
-    <h2 class="work-title">{title}</h2>
-    <p class="work-description">{description}</p>
-    <div class="work-tags">
+  <div class="p-5">
+    <h2 class="text-lg font-bold mb-1">{title}</h2>
+    <p class="text-gray-500 text-sm leading-relaxed mb-3">{description}</p>
+    <div class="flex flex-wrap gap-2 mb-2">
       {tags.map((tag) => (
-        <span class="tag">{tag}</span>
+        <span class="bg-indigo-50 text-indigo-600 text-xs px-3 py-1 rounded-full">
+          {tag}
+        </span>
       ))}
     </div>
-    <p class="work-year">{year}年</p>
+    <p class="text-gray-400 text-xs">{year}年</p>
   </div>
 </article>
-
-<style>
-  .work-card {
-    background-color: #fff;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: box-shadow 0.2s;
-  }
-
-  .work-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  }
-
-  .work-card-image {
-    overflow: hidden;
-  }
-
-  .work-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.3s;
-  }
-
-  .work-card:hover .work-image {
-    transform: scale(1.05);
-  }
-
-  .work-card-body {
-    padding: 1.5rem;
-  }
-
-  .work-title {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .work-description {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-
-  .work-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .tag {
-    display: inline-block;
-    background-color: #f0edff;
-    color: #4f39fa;
-    font-size: 0.8rem;
-    padding: 0.25rem 0.75rem;
-    border-radius: 100px;
-  }
-
-  .work-year {
-    color: #aaa;
-    font-size: 0.85rem;
-  }
-</style>

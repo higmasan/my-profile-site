@@ -1,0 +1,131 @@
+---
+const name = "田中太郎"
+const job = "Web開発者"
+const location = "東京"
+const pageTitle = `自己紹介 - ${name}のサイト`
+const bio = `
+  2020年からWeb開発を始めました。
+  フロントエンドの技術を中心に、
+  使いやすく美しいWebサイトを作ることを目指しています。
+`.trim()
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <a href="/">🏠 ホーム</a>
+        <a href="/about">💁 自己紹介</a>
+        <a href="/skills">💼 スキル</a>
+        <a href="/works">🎨 作品</a>
+        <a href="/contact">✉️ お問い合わせ</a>
+      </nav>
+    </header>
+
+    <main class="main">
+      <h1>自己紹介</h1>
+
+      <div class="profile">
+        <h2>{name}</h2>
+        <p class="job">{job}</p>
+        <p class="location">📍 {location}</p>
+      </div>
+
+      <div class="bio">
+        <h2>経歴</h2>
+        <p>{bio}</p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; {new Date().getFullYear()} {name}</p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .header {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 1rem 2rem;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .nav a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .nav a:hover {
+    color: #4f39fa;
+  }
+
+  .main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #4f39fa;
+    margin-bottom: 1.5rem;
+  }
+
+  .profile {
+    margin-bottom: 2rem;
+  }
+
+  .profile h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .job {
+    color: #666;
+    font-size: 1.1rem;
+  }
+
+  .location {
+    color: #888;
+    margin-top: 0.25rem;
+  }
+
+  .bio {
+    margin-bottom: 2rem;
+  }
+
+  .bio h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #4f39fa;
+  }
+
+  .bio p {
+    color: #555;
+    line-height: 1.8;
+    white-space: pre-line;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    color: #888;
+    font-size: 0.85rem;
+    border-top: 1px solid #eee;
+    margin-top: 3rem;
+  }
+</style>

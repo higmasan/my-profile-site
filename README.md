@@ -4,9 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Node.js](https://img.shields.io/badge/Node.js-18%2B-green)
 
-本リポジトリは、書籍  
-『Astro.jsではじめるモダンWeb開発 第1巻 ― はじめてのAstro.js』  
-で使用しているサンプルコードです。
+本リポジトリは、書籍『Astro.jsではじめるモダンWeb開発 第1巻入門編 はじめてのAstro.js ― 静的サイト制作入門』で使用しているサンプルコードです。
 
 本書を読みながら、実際に手を動かして学習できるようになっています。
 

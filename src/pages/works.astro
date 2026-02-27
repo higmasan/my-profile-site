@@ -1,6 +1,6 @@
 ---
-const name = "田中太郎"
-const pageTitle = `作品一覧 - ${name}のサイト`
+import BaseLayout from '../layouts/BaseLayout.astro'
+
 const works = [
   {
     title: "カフェのWebサイト",
@@ -23,84 +23,32 @@ const works = [
 ]
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <header class="header">
-      <nav class="nav">
-        <a href="/">🏠 ホーム</a>
-        <a href="/about">💁 自己紹介</a>
-        <a href="/skills">💼 スキル</a>
-        <a href="/works">🎨 作品</a>
-        <a href="/contact">✉️ お問い合わせ</a>
-      </nav>
-    </header>
+<BaseLayout title="作品一覧 - 田中太郎のサイト">
+  <h1>作品一覧</h1>
 
-    <main class="main">
-      <h1>作品一覧</h1>
+  <div class="works-grid">
+    {works.map((work) => (
+      <article class="work-card">
+        <div class="work-card-body">
+          <h2 class="work-title">{work.title}</h2>
+          <p class="work-description">{work.description}</p>
+          <div class="work-tags">
+            {work.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+          <p class="work-year">{work.year}年</p>
+        </div>
+      </article>
+    ))}
+  </div>
 
-      <div class="works-grid">
-        {works.map((work) => (
-          <article class="work-card">
-            <div class="work-card-body">
-              <h2 class="work-title">{work.title}</h2>
-              <p class="work-description">{work.description}</p>
-              <div class="work-tags">
-                {work.tags.map((tag) => (
-                  <span class="tag">{tag}</span>
-                ))}
-              </div>
-              <p class="work-year">{work.year}年</p>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      {works.length === 0 && (
-        <p class="empty-message">まだ作品がありません。</p>
-      )}
-    </main>
-
-    <footer class="footer">
-      <p>&copy; {new Date().getFullYear()} {name}</p>
-    </footer>
-  </body>
-</html>
+  {works.length === 0 && (
+    <p class="empty-message">まだ作品がありません。</p>
+  )}
+</BaseLayout>
 
 <style>
-  .header {
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
-    padding: 1rem 2rem;
-  }
-
-  .nav {
-    display: flex;
-    gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .nav a {
-    color: #555;
-    text-decoration: none;
-    font-size: 0.95rem;
-  }
-
-  .nav a:hover {
-    color: #4f39fa;
-  }
-
-  .main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
   h1 {
     font-size: 2rem;
     color: #4f39fa;
@@ -165,15 +113,6 @@ const works = [
     color: #888;
     text-align: center;
     padding: 3rem 0;
-  }
-
-  .footer {
-    text-align: center;
-    padding: 2rem;
-    color: #888;
-    font-size: 0.85rem;
-    border-top: 1px solid #eee;
-    margin-top: 3rem;
   }
 
   @media (min-width: 600px) {

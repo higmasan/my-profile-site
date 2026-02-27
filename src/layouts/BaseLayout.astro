@@ -1,4 +1,7 @@
 ---
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+
 interface Props {
   title?: string
   description?: string
@@ -8,17 +11,6 @@ const {
   title = "田中太郎のサイト",
   description = "田中太郎のポートフォリオサイトです。",
 } = Astro.props
-
-const name = "田中太郎"
-const year = new Date().getFullYear()
-
-const navItems = [
-  { label: "🏠 ホーム", href: "/" },
-  { label: "💁 自己紹介", href: "/about" },
-  { label: "💼 スキル", href: "/skills" },
-  { label: "🎨 作品", href: "/works" },
-  { label: "✉️ お問い合わせ", href: "/contact" },
-]
 ---
 
 <html lang="ja">
@@ -29,21 +21,13 @@ const navItems = [
     <title>{title}</title>
   </head>
   <body>
-    <header class="header">
-      <nav class="nav">
-        {navItems.map((item) => (
-          <a href={item.href} class="nav-link">{item.label}</a>
-        ))}
-      </nav>
-    </header>
+    <Header />
 
     <main class="main">
       <slot />
     </main>
 
-    <footer class="footer">
-      <p>&copy; {year} {name}</p>
-    </footer>
+    <Footer />
   </body>
 </html>
 
@@ -68,49 +52,9 @@ const navItems = [
 </style>
 
 <style>
-  .header {
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
-    padding: 1rem 2rem;
-  }
-
-  .nav {
-    display: flex;
-    gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .nav-link {
-    color: #555;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: color 0.2s;
-  }
-
-  .nav-link:hover {
-    color: #4f39fa;
-  }
-
   .main {
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
-  }
-
-  .footer {
-    text-align: center;
-    padding: 2rem;
-    color: #888;
-    font-size: 0.85rem;
-    border-top: 1px solid #eee;
-    margin-top: 3rem;
-  }
-
-  @media (max-width: 600px) {
-    .nav {
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
   }
 </style>

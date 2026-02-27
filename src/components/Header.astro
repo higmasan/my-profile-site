@@ -1,17 +1,22 @@
 ---
+import { Icon } from 'astro-icon/components'
+
 const navItems = [
-  { label: "🏠 ホーム", href: "/" },
-  { label: "💁 自己紹介", href: "/about" },
-  { label: "💼 スキル", href: "/skills" },
-  { label: "🎨 作品", href: "/works" },
-  { label: "✉️ お問い合わせ", href: "/contact" },
+  { label: "ホーム", href: "/", icon: "lucide:home" },
+  { label: "自己紹介", href: "/about", icon: "lucide:user" },
+  { label: "スキル", href: "/skills", icon: "lucide:briefcase" },
+  { label: "作品", href: "/works", icon: "lucide:palette" },
+  { label: "お問い合わせ", href: "/contact", icon: "lucide:mail" },
 ]
 ---
 
 <header class="header">
   <nav class="nav">
     {navItems.map((item) => (
-      <a href={item.href} class="nav-link">{item.label}</a>
+      <a href={item.href} class="nav-link">
+        <Icon name={item.icon} class="nav-icon" />
+        <span>{item.label}</span>
+      </a>
     ))}
   </nav>
 </header>
@@ -31,6 +36,9 @@ const navItems = [
   }
 
   .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
     color: #555;
     text-decoration: none;
     font-size: 0.95rem;
@@ -39,6 +47,11 @@ const navItems = [
 
   .nav-link:hover {
     color: #4f39fa;
+  }
+
+  .nav-icon {
+    width: 18px;
+    height: 18px;
   }
 
   @media (max-width: 600px) {

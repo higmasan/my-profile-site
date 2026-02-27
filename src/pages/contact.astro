@@ -1,87 +1,35 @@
 ---
-const name = "田中太郎"
+import BaseLayout from '../layouts/BaseLayout.astro'
+
 const email = "example@example.com"
-const pageTitle = `お問い合わせ - ${name}のサイト`
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <header class="header">
-      <nav class="nav">
-        <a href="/">🏠 ホーム</a>
-        <a href="/about">💁 自己紹介</a>
-        <a href="/skills">💼 スキル</a>
-        <a href="/works">🎨 作品</a>
-        <a href="/contact">✉️ お問い合わせ</a>
-      </nav>
-    </header>
+<BaseLayout title="お問い合わせ - 田中太郎のサイト">
+  <h1>お問い合わせ</h1>
 
-    <main class="main">
-      <h1>お問い合わせ</h1>
+  <div class="contact-info">
+    <p>お仕事のご依頼・ご相談は、以下の方法でお気軽にご連絡ください。</p>
 
-      <div class="contact-info">
-        <p>お仕事のご依頼・ご相談は、以下の方法でお気軽にご連絡ください。</p>
-
-        <div class="contact-methods">
-          <div class="contact-method">
-            <h2>✉️ メール</h2>
-            <p><a href={`mailto:${email}`}>{email}</a></p>
-          </div>
-
-          <div class="contact-method">
-            <h2>💬 SNS</h2>
-            <p><a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">X (Twitter)</a></p>
-            <p><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-          </div>
-        </div>
+    <div class="contact-methods">
+      <div class="contact-method">
+        <h2>✉️ メール</h2>
+        <p><a href={`mailto:${email}`}>{email}</a></p>
       </div>
 
-      <div class="form-placeholder">
-        <p>📝 お問い合わせフォームは準備中です。</p>
+      <div class="contact-method">
+        <h2>💬 SNS</h2>
+        <p><a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">X (Twitter)</a></p>
+        <p><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></p>
       </div>
-    </main>
+    </div>
+  </div>
 
-    <footer class="footer">
-      <p>&copy; {new Date().getFullYear()} {name}</p>
-    </footer>
-  </body>
-</html>
+  <div class="form-placeholder">
+    <p>📝 お問い合わせフォームは準備中です。</p>
+  </div>
+</BaseLayout>
 
 <style>
-  .header {
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
-    padding: 1rem 2rem;
-  }
-
-  .nav {
-    display: flex;
-    gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .nav a {
-    color: #555;
-    text-decoration: none;
-    font-size: 0.95rem;
-  }
-
-  .nav a:hover {
-    color: #4f39fa;
-  }
-
-  .main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
   h1 {
     font-size: 2rem;
     color: #4f39fa;
@@ -135,15 +83,6 @@ const pageTitle = `お問い合わせ - ${name}のサイト`
     padding: 3rem;
     text-align: center;
     color: #888;
-  }
-
-  .footer {
-    text-align: center;
-    padding: 2rem;
-    color: #888;
-    font-size: 0.85rem;
-    border-top: 1px solid #eee;
-    margin-top: 3rem;
   }
 
   @media (min-width: 600px) {

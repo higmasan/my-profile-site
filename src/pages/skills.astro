@@ -1,6 +1,6 @@
 ---
-const name = "田中太郎"
-const pageTitle = `スキル - ${name}のサイト`
+import BaseLayout from '../layouts/BaseLayout.astro'
+
 const skillCategories = [
   {
     category: "フロントエンド",
@@ -22,79 +22,27 @@ const skillCategories = [
 ]
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <header class="header">
-      <nav class="nav">
-        <a href="/">🏠 ホーム</a>
-        <a href="/about">💁 自己紹介</a>
-        <a href="/skills">💼 スキル</a>
-        <a href="/works">🎨 作品</a>
-        <a href="/contact">✉️ お問い合わせ</a>
-      </nav>
-    </header>
+<BaseLayout title="スキル - 田中太郎のサイト">
+  <h1>スキル</h1>
 
-    <main class="main">
-      <h1>スキル</h1>
-
-      {skillCategories.map((cat) => (
-        <section class="skill-category">
-          <h2>{cat.category}</h2>
-          <div class="skill-list">
-            {cat.skills.map((skill) => (
-              <div class="skill-item">
-                <span class="skill-name">{skill.name}</span>
-                <span class="skill-level">
-                  {"★".repeat(skill.level)}{"☆".repeat(5 - skill.level)}
-                </span>
-              </div>
-            ))}
+  {skillCategories.map((cat) => (
+    <section class="skill-category">
+      <h2>{cat.category}</h2>
+      <div class="skill-list">
+        {cat.skills.map((skill) => (
+          <div class="skill-item">
+            <span class="skill-name">{skill.name}</span>
+            <span class="skill-level">
+              {"★".repeat(skill.level)}{"☆".repeat(5 - skill.level)}
+            </span>
           </div>
-        </section>
-      ))}
-    </main>
-
-    <footer class="footer">
-      <p>&copy; {new Date().getFullYear()} {name}</p>
-    </footer>
-  </body>
-</html>
+        ))}
+      </div>
+    </section>
+  ))}
+</BaseLayout>
 
 <style>
-  .header {
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
-    padding: 1rem 2rem;
-  }
-
-  .nav {
-    display: flex;
-    gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .nav a {
-    color: #555;
-    text-decoration: none;
-    font-size: 0.95rem;
-  }
-
-  .nav a:hover {
-    color: #4f39fa;
-  }
-
-  .main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
   h1 {
     font-size: 2rem;
     color: #4f39fa;
@@ -135,14 +83,5 @@ const skillCategories = [
   .skill-level {
     color: #f5a623;
     letter-spacing: 2px;
-  }
-
-  .footer {
-    text-align: center;
-    padding: 2rem;
-    color: #888;
-    font-size: 0.85rem;
-    border-top: 1px solid #eee;
-    margin-top: 3rem;
   }
 </style>

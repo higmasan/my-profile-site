@@ -1,15 +1,29 @@
 ---
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
+
 interface Props {
   title: string
   description: string
   tags: string[]
   year: number
+  image?: ImageMetadata
 }
 
-const { title, description, tags, year } = Astro.props
+const { title, description, tags, year, image } = Astro.props
 ---
 
 <article class="work-card">
+  {image && (
+    <div class="work-card-image">
+      <Image
+        src={image}
+        alt={title}
+        width={600}
+        class="work-image"
+      />
+    </div>
+  )}
   <div class="work-card-body">
     <h2 class="work-title">{title}</h2>
     <p class="work-description">{description}</p>
@@ -33,6 +47,21 @@ const { title, description, tags, year } = Astro.props
 
   .work-card:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .work-card-image {
+    overflow: hidden;
+  }
+
+  .work-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .work-card:hover .work-image {
+    transform: scale(1.05);
   }
 
   .work-card-body {

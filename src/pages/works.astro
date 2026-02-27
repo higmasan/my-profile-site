@@ -2,24 +2,31 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import WorkCard from '../components/WorkCard.astro'
 
+import workCafe from '../assets/images/work-cafe.jpg'
+import workBlog from '../assets/images/work-blog.jpg'
+import workRecipe from '../assets/images/work-recipe.jpg'
+
 const works = [
   {
     title: "カフェのWebサイト",
     description: "架空のカフェのコーポレートサイト。レスポンシブデザインで制作。",
     tags: ["HTML", "CSS", "JavaScript"],
     year: 2024,
+    image: workCafe,
   },
   {
     title: "旅行ブログ",
     description: "旅行記を掲載するブログサイト。Markdownで記事を管理。",
     tags: ["Astro.js", "Markdown", "Tailwind CSS"],
     year: 2024,
+    image: workBlog,
   },
   {
     title: "レシピ管理アプリ",
     description: "お気に入りのレシピを保存・検索できるWebアプリ。",
     tags: ["React", "CSS Modules"],
     year: 2023,
+    image: workRecipe,
   },
 ]
 ---
@@ -34,6 +41,7 @@ const works = [
         description={work.description}
         tags={work.tags}
         year={work.year}
+        image={work.image}
       />
     ))}
   </div>

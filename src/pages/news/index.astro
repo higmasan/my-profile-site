@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+// news/ フォルダ内のすべての .md ファイルを取得
+const postFiles = import.meta.glob('./*.md', { eager: true })
+const allPosts = Object.values(postFiles) as any[]
+
+// 日付の降順（新しい順）にソート
+const sortedPosts = allPosts.sort((a, b) => {
+  const dateA = new Date(a.frontmatter.date)
+  const dateB = new Date(b.frontmatter.date)
+  return dateB.getTime() - dateA.getTime()
+})
+---
+
+<BaseLayout title="お知らせ - 田中太郎のサイト">
+  <h1>お知らせ</h1>
+
+  <div class="post-list">
+    {sortedPosts.map((post) => (
+      <article class="post-card">
+        <a href={post.url} class="post-link">
+          <time class="post-date" datetime={post.frontmatter.date}>
+            {post.frontmatter.date}
+          </time>
+          <h2 class="post-title">{post.frontmatter.title}</h2>
+          {post.frontmatter.description && (
+            <p class="post-description">{post.frontmatter.description}</p>
+          )}
+        </a>
+      </article>
+    ))}
+  </div>
+
+  {sortedPosts.length === 0 && (
+    <p class="empty-message">お知らせはまだありません。</p>
+  )}
+</BaseLayout>
+
+<style>
+  h1 {
+    font-size: 2rem;
+    color: #4f39fa;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .post-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    transition: box-shadow 0.2s;
+  }
+
+  .post-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .post-link {
+    display: block;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .post-date {
+    display: block;
+    color: #888;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-title {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .post-card:hover .post-title {
+    color: #4f39fa;
+  }
+
+  .post-description {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .empty-message {
+    color: #888;
+    text-align: center;
+    padding: 3rem 0;
+  }
+</style>

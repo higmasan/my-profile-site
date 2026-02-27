@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* ===========================
+   ベーススタイル
+   =========================== */
+body {
+  font-family: "Noto Sans JP", "Helvetica Neue", Arial,
+    "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    Meiryo, sans-serif;
+}

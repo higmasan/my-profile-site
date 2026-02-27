@@ -1,0 +1,50 @@
+---
+const navItems = [
+  { label: "🏠 ホーム", href: "/" },
+  { label: "💁 自己紹介", href: "/about" },
+  { label: "💼 スキル", href: "/skills" },
+  { label: "🎨 作品", href: "/works" },
+  { label: "✉️ お問い合わせ", href: "/contact" },
+]
+---
+
+<header class="header">
+  <nav class="nav">
+    {navItems.map((item) => (
+      <a href={item.href} class="nav-link">{item.label}</a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  .header {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 1rem 2rem;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .nav-link {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover {
+    color: #4f39fa;
+  }
+
+  @media (max-width: 600px) {
+    .nav {
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+  }
+</style>

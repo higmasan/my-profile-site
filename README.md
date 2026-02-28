@@ -34,7 +34,7 @@ node -v
 ### 1. リポジトリを取得する
 
 ```bash
-git remote add origin https://github.com/higmasa/my-profile-site.git
+git remote add origin https://github.com/higmasan/my-profile-site.git
 cd my-profile-site
 ```
 
